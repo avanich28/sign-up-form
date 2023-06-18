@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap");
+
+/* Mayer Reset */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* System font */
+body {
+  font-family: "Poppins", system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+@font-face {
+  font-family: "norse-bold";
+  src: url(font/webfontkit-20230618-132104/norse-bold_1-webfont.woff2)
+      format("woff2"),
+    url(font/webfontkit-20230618-132104/norse-bold_1-webfont.woff)
+      format("woff");
+}
+:root {
+  --background-color-header: rgb(192, 72, 53);
+  --background-color-main: rgba(57, 54, 54, 0.917);
+  --color-font-head: whitesmoke;
+  --color-font-detail: rgb(172, 169, 169);
+}
+
+body {
+  background-color: var(--background-color-header);
+}
+
+.container {
+  background-color: var(--background-color-main);
+  color: var(--color-font-detail);
+}
+
+.logo {
+  font-family: "norse-bold";
+  font-size: 6rem;
+  letter-spacing: 0.5rem;
+}
+
+img {
+  height: 100%;
+}
+
+.logo-img {
+  width: 5rem;
+}
+
+.library-img {
+  width: 30rem;
+}
