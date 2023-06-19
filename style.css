@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;1,200&display=swap");
 
 /* Mayer Reset */
 html,
@@ -88,12 +88,7 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-}
-
-/* System font */
-body {
-  font-family: "Poppins", system-ui, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  box-sizing: border-box;
 }
 
 @font-face {
@@ -103,30 +98,100 @@ body {
     url(font/webfontkit-20230618-132104/norse-bold_1-webfont.woff)
       format("woff");
 }
-:root {
-  --background-color-header: rgb(192, 72, 53);
+
+:root.light {
+  --background-color-header: whitesmoke;
+  --background-color-main: rgba(255, 255, 255, 0.917);
+  --color-font-head: rgb(42, 40, 40);
+  --color-font-detail: rgb(132, 143, 156);
+  --border-bottom-input: rgb(35, 33, 33);
+  --color-button: rgb(183, 66, 48);
+  --color-link: var(--color-font-head);
+}
+
+:root.dark {
+  --background-color-header: rgb(183, 66, 48);
   --background-color-main: rgba(57, 54, 54, 0.917);
   --color-font-head: whitesmoke;
-  --color-font-detail: rgb(172, 169, 169);
+  --color-font-detail: rgb(132, 143, 156);
+  --border-bottom-input: rgb(35, 33, 33);
+  --color-button: var(--background-color-header);
+  --color-link: var(--background-color-header);
 }
 
 body {
+  /* System font */
+  font-family: "Poppins", system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
   background-color: var(--background-color-header);
 }
 
-.container {
-  background-color: var(--background-color-main);
-  color: var(--color-font-detail);
+.fa-sun,
+.fa-moon {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  transition: all 0.7s ease-in-out;
+}
+
+.fa-sun:hover {
+  transform: rotate(90deg);
+}
+
+.fa-moon:hover {
+  transform: rotate(-150deg);
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  row-gap: 10px;
 }
 
 .logo {
+  position: relative;
+  width: 350px;
+  margin: 0 auto;
+  margin-top: 30px;
   font-family: "norse-bold";
-  font-size: 6rem;
+  font-size: 5rem;
   letter-spacing: 0.5rem;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.logo:hover {
+  animation: shake 0.4s infinite;
+}
+
+.sub_logo {
+  position: absolute;
+  bottom: -0.8em;
+  right: 0;
+  font-size: 1.5rem;
 }
 
 img {
   height: 100%;
+  margin-bottom: -8px;
 }
 
 .logo-img {
@@ -134,5 +199,176 @@ img {
 }
 
 .library-img {
-  width: 30rem;
+  width: min(75%, 418px);
+  margin-top: 30px;
 }
+
+.container {
+  padding: 25px 5px;
+  background-color: var(--background-color-main);
+  color: var(--color-font-detail);
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+}
+
+main.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  row-gap: 30px;
+}
+
+.sign-up {
+  color: var(--color-font-head);
+  font-size: 2.8em;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+p,
+.form-header,
+.log-in {
+  color: var(--color-font-head);
+}
+
+.form-header > span {
+  font-style: italic;
+  font-size: small;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  row-gap: 25px;
+}
+
+form > div {
+  position: relative;
+}
+
+label {
+  display: block;
+  position: absolute;
+  bottom: 1px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 0.9em;
+  transition: all 0.7s ease-out;
+}
+
+input {
+  position: relative;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 200px;
+  padding-top: 10px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1.8px solid var(--border-bottom-input);
+  color: var(--color-font-head);
+  font-size: inherit;
+  letter-spacing: 1.5px;
+  transition: all 0.8s ease-in-out;
+}
+
+input:focus,
+input:not(:placeholder-shown) {
+  outline: none;
+  border: 1px solid var(--color-button);
+  border-radius: 2px;
+  /* height: 30px; */
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  transform: translate(10px, -21px);
+  background-color: var(--color-button);
+  padding: 0 4px;
+  border-radius: 2px;
+  color: white;
+  font-size: small;
+}
+
+button {
+  background-color: var(--color-button);
+  border: none;
+  border-radius: 5px;
+  padding: 13px 45px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: white;
+  transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.04);
+}
+
+.log-in {
+  margin-top: 10px;
+  font-size: small;
+  font-weight: lighter;
+}
+
+.log-in > a {
+  color: var(--color-link);
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (min-width: 700px) {
+  body {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  header {
+    flex: 1;
+  }
+
+  main {
+    flex: 2;
+    height: 100vh;
+  }
+
+  .library-img {
+    width: 418px;
+    margin-top: 60px;
+  }
+
+  .form-content {
+    row-gap: 25px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  header {
+    flex: 2;
+  }
+  .form-content {
+    flex-direction: row;
+    justify-content: center;
+    column-gap: min(20%, 50px);
+    row-gap: 70px;
+    flex-wrap: wrap;
+  }
+
+  .library-img {
+    width: min(80%, 470px);
+  }
+
+  main.container {
+    row-gap: 60px;
+  }
+}
+
+/* refresh effect */
+/* form validation -> valid/invalid */
