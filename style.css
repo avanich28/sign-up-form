@@ -91,6 +91,10 @@ video {
   box-sizing: border-box;
 }
 
+body {
+  height: 100%;
+}
+
 @font-face {
   font-family: "norse-bold";
   src: url(font/webfontkit-20230618-132104/norse-bold_1-webfont.woff2)
@@ -157,7 +161,7 @@ header {
   margin-top: 30px;
   font-family: "norse-bold";
   font-size: 5rem;
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.45rem;
 }
 
 @keyframes shake {
@@ -208,7 +212,7 @@ img {
   background-color: var(--background-color-main);
   color: var(--color-font-detail);
   font-size: 1rem;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.3px;
 }
 
 main.container {
@@ -241,7 +245,7 @@ p,
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  row-gap: 25px;
+  row-gap: 60px;
 }
 
 form > div {
@@ -251,7 +255,7 @@ form > div {
 label {
   display: block;
   position: absolute;
-  bottom: 1px;
+  top: 0.5em;
   text-align: left;
   font-weight: bold;
   font-size: 0.9em;
@@ -269,8 +273,8 @@ input {
   border: none;
   border-bottom: 1.8px solid var(--border-bottom-input);
   color: var(--color-font-head);
-  font-size: inherit;
-  letter-spacing: 1.5px;
+  font-size: 14px;
+  letter-spacing: 1.3px;
   transition: all 0.8s ease-in-out;
 }
 
@@ -279,12 +283,11 @@ input:not(:placeholder-shown) {
   outline: none;
   border: 1px solid var(--color-button);
   border-radius: 2px;
-  /* height: 30px; */
 }
 
 input:focus + label,
 input:not(:placeholder-shown) + label {
-  transform: translate(10px, -21px);
+  transform: translate(10px, -24px);
   background-color: var(--color-button);
   padding: 0 4px;
   border-radius: 2px;
@@ -292,13 +295,42 @@ input:not(:placeholder-shown) + label {
   font-size: small;
 }
 
+.check::after,
+.pwd-check {
+  position: absolute;
+  margin-top: 7px;
+  margin-left: 10px;
+}
+
+input:not(input[name="confirm_password"]):valid ~ .check::after {
+  content: "";
+
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font: var(--fa-font-solid);
+  content: "\f058";
+  color: rgb(73, 224, 68);
+}
+
+.error {
+  display: block;
+  position: absolute;
+  width: 280px;
+  color: red;
+  text-align: left;
+  font-size: 11px;
+  margin-top: 0.5em;
+}
+
 button {
   background-color: var(--color-button);
   border: none;
   border-radius: 5px;
-  padding: 13px 45px;
-  font-size: 18px;
-  letter-spacing: 2px;
+  padding: 10px 30px;
+  margin-top: 15px;
+  font-size: 15px;
+  letter-spacing: 1.3px;
   color: white;
   transition: transform 0.2s ease-in-out;
 }
@@ -336,16 +368,12 @@ a:hover {
 
   main {
     flex: 2;
-    height: 100vh;
+    height: 100%;
   }
 
   .library-img {
     width: 418px;
     margin-top: 60px;
-  }
-
-  .form-content {
-    row-gap: 25px;
   }
 }
 
@@ -353,6 +381,7 @@ a:hover {
   header {
     flex: 2;
   }
+
   .form-content {
     flex-direction: row;
     justify-content: center;
@@ -367,8 +396,14 @@ a:hover {
 
   main.container {
     row-gap: 60px;
+    height: 100vh;
+  }
+
+  .form-submit {
+    margin-top: -40px;
+    left: -100px;
+    text-align: left;
   }
 }
 
 /* refresh effect */
-/* form validation -> valid/invalid */
