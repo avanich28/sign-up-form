@@ -11,6 +11,11 @@ const button = document.querySelector("button");
 const pwdCheck = document.querySelector(".pwd-check");
 const [firstName, lastName, email, tel, pwd, confirmPwd] = inputs;
 
+const bodyEl = document.querySelector("body");
+const headerForm = document.querySelector(".header-form");
+const mainForm = document.querySelector(".container");
+const overlay = document.querySelector(".overlay");
+
 // Theme
 icon.addEventListener("click", () => {
   root.classList.toggle("dark");
@@ -34,45 +39,43 @@ const inputName = Array.from(inputs).map((x) =>
   x.id.includes("_") ? x.id.replace("_", " ") : x.id
 );
 
-button.addEventListener("click", (e) => {
-  // e.preventDefault();
-  inputs.forEach((x, i) =>
-    x.value === ""
-      ? validateInput(null, null, i, `Please enter your ${inputName[i]}.`)
-      : ""
-  );
-});
+// Check input
+let checks = new Array(6).fill(false);
 
+const checkInput = (e, regex) => (e.target.value.match(regex) ? true : false);
+
+// Inputs
 firstName.addEventListener("input", (e) => {
   const regex = /^[a-zA-Z0-9_\-\.]{3,15}$/;
+  checks[0] = checkInput(e, regex);
   validateInput(e, regex, 0, "Please enter at least 3 letters");
 });
 
 lastName.addEventListener("input", (e) => {
   const regex = /^[a-zA-Z0-9_\-\.]{3,15}$/;
+  checks[1] = checkInput(e, regex);
   validateInput(e, regex, 1, "Please enter at least 3 letters");
 });
 
-email.addEventListener("input", () =>
-  email.validity.typeMismatch
-    ? validateInput(
-        null,
-        null,
-        2,
-        "Please enter in format yourname@example.com"
-      )
-    : validateInput(null, null, 2, "")
-);
+email.addEventListener("input", () => {
+  if (email.validity.typeMismatch) {
+    validateInput(null, null, 2, "Please enter in format yourname@example.com");
+  } else {
+    validateInput(null, null, 2, "");
+    checks[2] = true;
+  }
+});
 
 tel.addEventListener("input", (e) => {
   const regex = /^[0][1-9]{2}\s[0-9]{3}\s[0-9]{4}$/;
+  checks[3] = checkInput(e, regex);
   validateInput(e, regex, 3, "Please enter in format 091 234 5678");
 });
 
-let checkPwd;
 pwd.addEventListener("input", (e) => {
   const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-  checkPwd = e.target.value.match(regex) ? true : false;
+  checks[4] = checkInput(e, regex);
+  console.log(checks[4]);
   validateInput(
     e,
     regex,
@@ -82,7 +85,8 @@ pwd.addEventListener("input", (e) => {
 });
 
 confirmPwd.addEventListener("input", (e) => {
-  if (e.target.value === pwd.value && checkPwd === true) {
+  if (e.target.value === pwd.value && checks[4] === true) {
+    checks[5] = true;
     validateInput(null, null, 5, "");
     pwdCheck.innerHTML =
       '<i class="fa-solid fa-circle-check" style="color: #49e044;"></i>';
@@ -91,6 +95,26 @@ confirmPwd.addEventListener("input", (e) => {
     pwdCheck.innerHTML = "";
   } else {
     validateInput(null, null, 5, "Password did not match");
+  }
+});
+
+// Button submit
+button.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (checks.every((x) => x === true)) {
+    icon.style.display = "none";
+    headerForm.style.display = "none";
+    mainForm.style.display = "none";
+    root.classList.add("overlay");
+    bodyEl.classList.add("overlay");
+    overlay.style.visibility = "visible";
+    overlay.style.animation = "refreshMobile 2s forwards";
+  } else {
+    inputs.forEach((x, i) =>
+      x.value === ""
+        ? validateInput(null, null, i, `Please enter your ${inputName[i]}.`)
+        : ""
+    );
   }
 });
 

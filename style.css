@@ -97,6 +97,7 @@ html {
 
 body {
   height: 100%;
+  /* position: relative; */
 }
 
 @font-face {
@@ -442,7 +443,7 @@ a:hover {
 
   .container {
     row-gap: 60px;
-    height: 100vh;
+    height: 94vh;
   }
 
   .form-submit {
@@ -450,4 +451,99 @@ a:hover {
     left: -100px;
     text-align: left;
   }
+}
+
+/* overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  height: 100vh;
+}
+
+:root.overlay {
+  --background-color: whitesmoke;
+  --color-font-message: rgba(57, 54, 54, 0.917);
+  --background-color-floor: #7b3f00;
+}
+
+body.overlay {
+  background-color: var(--background-color);
+}
+
+.header-overlay {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  row-gap: 10px;
+  animation: none;
+}
+
+.logo-overlay {
+  position: relative;
+  width: 350px;
+  margin-left: 20px;
+  margin-top: 30px;
+  font-family: "norse-bold";
+  font-size: 5rem;
+  letter-spacing: 0.45rem;
+}
+
+.logo-overlay:hover {
+  animation: shake 0.4s infinite;
+}
+
+.sub_logo-overlay {
+  position: absolute;
+  bottom: -0.8em;
+  right: 0;
+  font-size: 1.5rem;
+}
+
+.main-overlay {
+  margin-top: 90px;
+  display: flex;
+  flex-direction: column;
+}
+
+.msg {
+  flex: auto;
+  padding-left: 15%;
+  font-size: 30px;
+  text-align: left;
+  color: var(--color-font-message);
+}
+
+.logo-img-overlay {
+  width: 5rem;
+  margin-bottom: -8px;
+}
+
+.image-container-overlay {
+  flex: 1;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+img.boy,
+img.girl {
+  height: 100%;
+  width: min(50%, 340px);
+}
+
+.girl {
+  margin-top: -70px;
+  margin-left: -80px;
+}
+
+.footer-overlay {
+  position: fixed;
+  bottom: 0;
+  background-color: var(--background-color-floor);
+  z-index: -1;
+  height: 240px;
+  width: 100%;
 }
