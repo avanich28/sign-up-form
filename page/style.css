@@ -1,0 +1,216 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;1,200&display=swap");
+
+/* Mayer Reset */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+
+:root {
+  --background-color: whitesmoke;
+  --color-font-message: rgba(57, 54, 54, 0.917);
+  --background-color-floor: #7b3f00;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* System font */
+  font-family: "Poppins", system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+  height: 100%;
+  background-color: var(--background-color);
+}
+
+@font-face {
+  font-family: "norse-bold";
+  src: url(font/webfontkit-20230618-132104/norse-bold_1-webfont.woff2)
+      format("woff2"),
+    url(font/webfontkit-20230618-132104/norse-bold_1-webfont.woff)
+      format("woff");
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  row-gap: 10px;
+}
+
+.logo {
+  position: relative;
+  width: 350px;
+  margin-left: 20px;
+  margin-top: 30px;
+  font-family: "norse-bold";
+  font-size: 5rem;
+  letter-spacing: 0.45rem;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.logo:hover {
+  animation: shake 0.4s infinite;
+}
+
+.sub_logo {
+  position: absolute;
+  bottom: -0.8em;
+  right: 0;
+  font-size: 1.5rem;
+}
+
+main {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 98px;
+}
+
+.msg {
+  flex: 1 1 auto;
+  /* align-self: center; */
+  padding-left: 15%;
+  font-size: 30px;
+  text-align: left;
+  color: var(--color-font-message);
+}
+
+img {
+  height: 100%;
+}
+
+.logo-img {
+  width: 5rem;
+  margin-bottom: -8px;
+}
+
+.image-container {
+  flex: 1;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+}
+
+.boy,
+.girl {
+  width: min(50%, 340px);
+}
+
+.girl {
+  margin-top: -80px;
+  margin-left: -80px;
+}
+
+.background-floor {
+  background-color: var(--background-color-floor);
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  height: 270px;
+  width: 100%;
+}
