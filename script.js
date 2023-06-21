@@ -109,6 +109,7 @@ button.addEventListener("click", (e) => {
     bodyEl.classList.add("overlay");
     overlay.style.visibility = "visible";
     overlay.style.animation = "refreshMobile 2s forwards";
+    overlay.style.overflow = "auto";
   } else {
     inputs.forEach((x, i) =>
       x.value === ""
