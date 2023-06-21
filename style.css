@@ -91,6 +91,10 @@ video {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   height: 100%;
 }
@@ -131,11 +135,34 @@ body {
   background-color: var(--background-color-header);
 }
 
+@keyframes refreshMobile {
+  0% {
+    transform: translateY(-15px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(inherit);
+    opacity: 1;
+  }
+}
+
+@keyframes refreshDesktop {
+  0% {
+    transform: translate(10px, -15px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(inherit, inherit);
+    opacity: 1;
+  }
+}
+
 .fa-sun,
 .fa-moon {
   position: absolute;
   top: 30px;
   right: 20px;
+  z-index: 2;
   transition: all 0.7s ease-in-out;
 }
 
@@ -152,6 +179,7 @@ header {
   flex-direction: column;
   text-align: center;
   row-gap: 10px;
+  animation: refreshMobile 2s forwards;
 }
 
 .logo {
@@ -213,20 +241,26 @@ img {
   color: var(--color-font-detail);
   font-size: 1rem;
   letter-spacing: 1.3px;
-}
 
-main.container {
   display: flex;
   flex-direction: column;
   text-align: center;
   row-gap: 30px;
+
+  animation: refreshMobile 2s forwards;
+}
+
+.fa-angles-down {
+  position: absolute;
+  left: 48%;
 }
 
 .sign-up {
   color: var(--color-font-head);
   font-size: 2.8em;
   font-weight: bold;
-  margin: 20px 0;
+  margin: 0 auto;
+  margin-top: 23px;
 }
 
 p,
@@ -248,7 +282,7 @@ p,
   row-gap: 60px;
 }
 
-form > div {
+form div {
   position: relative;
 }
 
@@ -362,18 +396,30 @@ a:hover {
     justify-content: space-between;
   }
 
+  header,
+  .container {
+    animation: refreshDesktop 2s forwards;
+  }
+
   header {
     flex: 1;
   }
 
-  main {
+  .container {
     flex: 2;
     height: 100%;
   }
 
+  .fa-angles-down {
+    visibility: hidden;
+  }
+
+  .image-container {
+    margin-top: calc((var(--scroll) / 3) + 10px);
+  }
+
   .library-img {
     width: 418px;
-    margin-top: 60px;
   }
 }
 
@@ -394,7 +440,7 @@ a:hover {
     width: min(80%, 470px);
   }
 
-  main.container {
+  .container {
     row-gap: 60px;
     height: 100vh;
   }
@@ -405,5 +451,3 @@ a:hover {
     text-align: left;
   }
 }
-
-/* refresh effect */

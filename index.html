@@ -25,12 +25,16 @@
       </div>
     </header>
     <main class="container">
+      <i
+        class="fa-solid fa-angles-down fa-beat-fade fa-2xl"
+        style="color: #f4b952"
+      ></i>
       <div class="form-header">
         <h1 class="sign-up">Sign up</h1>
         <p>Welcome to our free online library and education</p>
         <span>Note: This is not a <em>real</em> online service.</span>
       </div>
-      <form action="#" method="post" class="form-content">
+      <form action="/page/index.html" method="get" class="form-content">
         <div>
           <input
             type="text"
@@ -74,8 +78,8 @@
             type="tel"
             name="phone_number"
             id="phone_number"
-            maxlength="10"
-            pattern="^[0][1-9][0-9]{8}$"
+            maxlength="12"
+            pattern="^[0][1-9]{2}\s[0-9]{3}\s[0-9]{4}$"
             placeholder=" "
             required
           />
