@@ -91,6 +91,14 @@ video {
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "norse-bold";
+  src: url(font/webfontkit-20230618-132104/norse-bold_1-webfont.woff2)
+      format("woff2"),
+    url(font/webfontkit-20230618-132104/norse-bold_1-webfont.woff)
+      format("woff");
+}
+
 :root {
   --background-color: whitesmoke;
   --color-font-message: rgba(57, 54, 54, 0.917);
@@ -99,6 +107,17 @@ video {
 
 html {
   scroll-behavior: smooth;
+}
+
+@keyframes refresh {
+  0% {
+    transform: translateY(-15px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(inherit);
+    opacity: 1;
+  }
 }
 
 body {
@@ -110,19 +129,12 @@ body {
   background-color: var(--background-color);
 }
 
-@font-face {
-  font-family: "norse-bold";
-  src: url(font/webfontkit-20230618-132104/norse-bold_1-webfont.woff2)
-      format("woff2"),
-    url(font/webfontkit-20230618-132104/norse-bold_1-webfont.woff)
-      format("woff");
-}
-
 header {
   display: flex;
   flex-direction: column;
   text-align: center;
   row-gap: 10px;
+  animation: refresh 2s forwards;
 }
 
 .logo {
@@ -169,6 +181,7 @@ main {
   display: flex;
   flex-direction: column;
   row-gap: 98px;
+  animation: refresh 2s forwards;
 }
 
 .msg {
