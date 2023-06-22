@@ -443,7 +443,7 @@ a:hover {
 
   .container {
     row-gap: 60px;
-    height: 100vh;
+    height: max(680px, 100vh);
   }
 
   .form-submit {
